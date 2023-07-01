@@ -5,14 +5,22 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerInputManager))]
 public class PlayerAim : MonoBehaviour
 {
+    [Header("Aim Settings")]
     [SerializeField] PlayerInputManager m_mplayerInputManager;
     [SerializeField] Transform m_aim;
     [SerializeField] Transform m_firepoint;
+    Vector2 m_aimDirection;
+    float m_aimAngle;
+
+    [Header("Melee Settings")]
+    [SerializeField] float m_meleeDamage;
+    [SerializeField] Trigger.System2D.BoxTrigger2D m_meleeBoxTrigger;
+
+    [Header("Special Settings")]
     [SerializeField, Min(0)] float m_specialTimer;
     [SerializeField] Bullet bullet;
     float m_currentSpecialTimer;
-    Vector2 m_aimDirection;
-    float m_aimAngle;
+    
     public float m_AimAngle => m_aimAngle;
 
     private void Awake()
@@ -39,7 +47,7 @@ public class PlayerAim : MonoBehaviour
 
     public void MeleeAttack()
     {
-        Debug.Log("Melee não implementado");
+        m_meleeBoxTrigger.InTrigger<IDamage>(transform.position)?.Damage(m_meleeDamage);
     }
 
     void SetSpecialTimer(float timer)
@@ -53,5 +61,10 @@ public class PlayerAim : MonoBehaviour
 
         SetSpecialTimer(m_specialTimer);
         bullet.SetActive(m_firepoint.position, m_aim.rotation);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        m_meleeBoxTrigger.DrawTrigger(Vector3.zero);
     }
 }
