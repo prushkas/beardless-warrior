@@ -9,7 +9,7 @@ public class Bullet : MonoBehaviour
     [SerializeField, Min(0)] float m_bulletLifeTime;
     [SerializeField] Trigger.System2D.BoxTrigger2D m_boxTrigger;
     float m_currentBulletLifeTime;
-    private void Start()
+    private void Awake()
     {
         Desactive();
     }
