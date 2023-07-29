@@ -8,7 +8,6 @@ public class PlayerLifeSystem : GenericLifeSystem, IDamage, IHeal, IDie
     {
         m_currentHp = m_hpRange.m_MaxValue;
     }
-
     public void Damage(float damage)
     {
         OnHpChange?.Invoke();

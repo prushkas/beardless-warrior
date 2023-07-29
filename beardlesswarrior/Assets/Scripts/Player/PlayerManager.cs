@@ -8,7 +8,6 @@ public class PlayerManager : Singleton<PlayerManager>
     [SerializeField] PlayerAim m_playerAim;
     [SerializeField] PlayerInputManager m_playerInputManager;
     [SerializeField] PlayerLifeSystem m_playerLifeSystem;
-
     public PlayerMove m_PlayerMove => m_playerMove;
     public PlayerAim m_PlayerAim => m_playerAim;
     public PlayerInputManager m_PlayerInputManager => m_playerInputManager;

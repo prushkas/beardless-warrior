@@ -18,8 +18,19 @@ public class PlayerInputManager : MonoBehaviour
     }
     void Update()
     {
+        MovementInputs();
+        AttackInputs();
+    }
+    void MovementInputs()
+    {
         m_playerMoveDirection.Set(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-
+        if (Input.GetKeyDown(m_dashKeycode))
+        {
+            OnDashButtonDown?.Invoke();
+        }
+    }
+    void AttackInputs()
+    {
         if (Input.GetMouseButtonDown(0))
         {
             OnMeleeAttackButtonDown?.Invoke();
@@ -29,13 +40,7 @@ public class PlayerInputManager : MonoBehaviour
         {
             OnSpecialAttackButtonDown?.Invoke();
         }
-
-        if (Input.GetKeyDown(m_dashKeycode))
-        {
-            OnDashButtonDown?.Invoke();
-        }
     }
-
     public Vector3 MouseWorldPosition()
     {
         return m_mainCamera.ScreenToWorldPoint(Input.mousePosition);
