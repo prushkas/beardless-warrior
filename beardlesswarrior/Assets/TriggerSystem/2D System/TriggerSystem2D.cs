@@ -172,7 +172,7 @@ namespace Trigger.System2D
             }
             if (!InTrigger(_position, callbacks)) return null;
 
-            GameObject g = Physics2D.OverlapBox(_position + TriggerOffset.ToVector3(), TriggerSize, TriggerLayerMask).gameObject;
+            GameObject g = Physics2D.OverlapBox(_position + TriggerOffset.ToVector3(), TriggerSize, 0f, TriggerLayerMask).gameObject;
             if (g.TryGetComponent(out T _component))
             {
                 return _component;
