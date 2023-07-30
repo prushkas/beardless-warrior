@@ -7,6 +7,8 @@ public class PlayerLifeSystem : GenericLifeSystem, IDamage, IHeal, IDie
     SpriteRenderer m_playerSpriteRenderer;
     bool m_canTakeDamage = true;
     [SerializeField, Min(0)] float m_invincibilitySeconds = 1f;
+    public float m_MaxLife => m_hpRange.m_MaxValue;
+    public float m_CurrentLife => m_currentHp;
     public virtual void Awake()
     {
         m_currentHp = m_hpRange.m_MaxValue;

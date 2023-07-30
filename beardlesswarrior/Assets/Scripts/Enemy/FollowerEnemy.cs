@@ -7,16 +7,16 @@ public class FollowerEnemy : AbstractEnemy
     [SerializeField] List<Transform> m_waypoints;
     Transform m_currentWaypoint;
     bool m_chasing;
-    Vector3 m_aimDirection;
     [SerializeField, Min(0)] float m_moveSpeed;
     [SerializeField, Range(0, 2f)] float m_waypointDistance = .2f;
     [SerializeField, Min(0)] float m_timeToNextWaypoint = 2f;
+    SpriteRenderer m_enemySpriteRenderer;
 
     private void Awake()
     {
-        //m_rig = GetComponent<Rigidbody2D>();
         DesactiveChase();
         PickNewWaypoint();
+        m_enemySpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void FixedUpdate()
@@ -27,7 +27,7 @@ public class FollowerEnemy : AbstractEnemy
     void Move()
     {
         Vector3 target = m_chasing ? m_playerTransform.position : m_currentWaypoint.position;
-        m_aimDirection = m_playerTransform.position - target;
+        Anim(target.x);
         transform.position = Vector3.MoveTowards(transform.position, target, m_moveSpeed * Time.deltaTime);
         if (m_chasing) return;
         if (Vector3.Distance(transform.position, m_currentWaypoint.position) < m_waypointDistance)
@@ -47,6 +47,11 @@ public class FollowerEnemy : AbstractEnemy
         }
         Invoke(nameof(PickNewWaypoint), m_timeToNextWaypoint);
         m_currentWaypoint = newWayPoint;
+    }
+
+    void Anim(float targetXPosition)
+    {
+        m_enemySpriteRenderer.flipX = targetXPosition < transform.position.x;
     }
 
 

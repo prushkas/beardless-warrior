@@ -21,7 +21,10 @@ public class PlayerAim : MonoBehaviour
     [SerializeField, Min(0)] float m_specialTimer;
     [SerializeField] Bullet bullet;
     float m_currentSpecialTimer;
-    
+    public float m_CurrentSpecialTimer => m_currentSpecialTimer;
+    public float m_SpecialTimer => m_specialTimer;
+
+
     public float m_AimAngle => m_aimAngle;
 
     private void Awake()
