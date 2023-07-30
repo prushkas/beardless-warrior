@@ -14,10 +14,11 @@ public class PlayerAim : MonoBehaviour
     public Vector2 m_AimDirection => m_aimDirection;
 
     [Header("Melee Settings")]
-    [SerializeField] float m_meleeDamage;
+    [SerializeField, Min(1)] float m_meleeDamage = 1f;
     [SerializeField] Trigger.System2D.BoxTrigger2D m_meleeBoxTrigger;
 
     [Header("Special Settings")]
+    [SerializeField, Min(1)] float m_specialDamage = 1f;
     [SerializeField, Min(0)] float m_specialTimer;
     [SerializeField] Bullet bullet;
     float m_currentSpecialTimer;
@@ -51,11 +52,20 @@ public class PlayerAim : MonoBehaviour
 
     public void MeleeAttack()
     {
-        //m_meleeBoxTrigger.InTrigger<IDamage>(transform.position)?.Damage(m_meleeDamage);
         if (!m_meleeBoxTrigger.InTrigger(m_firepoint)) return;
         IDamage lifeSystem = m_meleeBoxTrigger.InTrigger<IDamage>(m_firepoint);
         if (lifeSystem == null) return;
         lifeSystem.Damage(m_meleeDamage);
+    }
+
+    public void IncreaseMeleeDamage(float value)
+    {
+        m_meleeDamage += value;
+    }
+
+    public void IncreaseSpecialDamage(float value)
+    {
+        m_specialDamage += value;
     }
 
     void SetSpecialTimer(float timer)
@@ -68,7 +78,7 @@ public class PlayerAim : MonoBehaviour
         if (m_currentSpecialTimer >= 0) return;
 
         SetSpecialTimer(m_specialTimer);
-        bullet.SetActive(m_firepoint.position, m_aim.rotation);
+        bullet.SetActive(m_firepoint.position, m_aim.rotation, m_specialDamage);
     }
 
     private void OnDrawGizmosSelected()

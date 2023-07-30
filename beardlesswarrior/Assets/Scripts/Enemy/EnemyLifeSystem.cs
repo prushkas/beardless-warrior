@@ -25,6 +25,6 @@ public class EnemyLifeSystem : GenericLifeSystem, IDamage, IDie
     }
     public void Death()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }
