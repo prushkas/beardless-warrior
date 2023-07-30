@@ -7,8 +7,13 @@ public class PlayerLifeSystem : GenericLifeSystem, IDamage, IHeal, IDie
     SpriteRenderer m_playerSpriteRenderer;
     bool m_canTakeDamage = true;
     [SerializeField, Min(0)] float m_invincibilitySeconds = 1f;
+    int m_pots;
+    public float m_MaxLife => m_hpRange.m_MaxValue;
+    public float m_CurrentLife => m_currentHp;
+    public int m_Pots => m_pots;
     public virtual void Awake()
     {
+        m_pots = 1;
         m_currentHp = m_hpRange.m_MaxValue;
         m_canTakeDamage = true;
         m_playerSpriteRenderer = GetComponent<SpriteRenderer>();
@@ -19,13 +24,14 @@ public class PlayerLifeSystem : GenericLifeSystem, IDamage, IHeal, IDie
         if (!m_canTakeDamage) return;
         m_canTakeDamage = false;
         StartCoroutine(InvincibilityTimer());
-        OnHpChange?.Invoke();
+        
         m_currentHp -= damage;
         if (m_currentHp <= m_hpRange.m_MinValue)
         {
             OnHpMin?.Invoke();
             Death();
         }
+        OnHpChange?.Invoke();
     }
 
     IEnumerator InvincibilityTimer()
@@ -42,16 +48,31 @@ public class PlayerLifeSystem : GenericLifeSystem, IDamage, IHeal, IDie
     }
     public void Death()
     {
-        Debug.Log("Morte não implementada!");
+        gameObject.SetActive(false);
     }
     public void Heal(float heal)
     {
-        OnHpChange?.Invoke();
+        if (m_pots <= 0) return;
         m_currentHp += heal;
+        m_pots--;
         if (m_currentHp >= m_hpRange.m_MaxValue)
         {
             m_currentHp = m_hpRange.m_MaxValue;
             OnHpMax?.Invoke();
         }
+        OnHpChange?.Invoke();
+    }
+
+    public void AddPot(int increaseValue)
+    {
+        m_pots += increaseValue;
+        OnHpChange?.Invoke();
+    }
+
+    public void IncreaseMaxHealth(float increaseValue)
+    {
+        m_hpRange.ChangeMaxValue(m_hpRange.m_MaxValue + increaseValue);
+        m_currentHp = m_hpRange.m_MaxValue;
+        OnHpChange?.Invoke();
     }
 }
