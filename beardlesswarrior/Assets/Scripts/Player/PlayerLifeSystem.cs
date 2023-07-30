@@ -26,6 +26,7 @@ public class PlayerLifeSystem : GenericLifeSystem, IDamage, IHeal, IDie
         StartCoroutine(InvincibilityTimer());
         
         m_currentHp -= damage;
+        SFXManager.Instance.m_playerDamage.Play();
         if (m_currentHp <= m_hpRange.m_MinValue)
         {
             OnHpMin?.Invoke();
@@ -52,7 +53,9 @@ public class PlayerLifeSystem : GenericLifeSystem, IDamage, IHeal, IDie
     }
     public void Heal(float heal)
     {
+        if (m_currentHp >= m_hpRange.m_MaxValue) return;
         if (m_pots <= 0) return;
+        SFXManager.Instance.m_playerHeal.Play();
         m_currentHp += heal;
         m_pots--;
         if (m_currentHp >= m_hpRange.m_MaxValue)

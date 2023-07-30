@@ -42,6 +42,7 @@ public class Spike : AbstractEnemy
     void ActiveSpike()
     {
         m_active = true;
+        SFXManager.Instance.m_spikes.Play();
         m_spikeAnimator.SetTrigger("Attack");
         Invoke(nameof(DesactiveSpike), m_spikeTimerToDesactive);
     }

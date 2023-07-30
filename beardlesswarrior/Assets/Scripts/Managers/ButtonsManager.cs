@@ -8,26 +8,31 @@ public class ButtonsManager : Singleton<ButtonsManager>
     [SerializeField] int m_gameSceneIndex = 1;
     public void RestartScene()
     {
+        SFXManager.Instance.m_buttonSFX.Play();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void Quit()
     {
+        SFXManager.Instance.m_buttonSFX.Play();
         Application.Quit();
     }
 
     public void Continue()
     {
+        SFXManager.Instance.m_buttonSFX.Play();
         GameManager.Instance.PauseGame(false);
     }
 
     public void Menu()
     {
+        SFXManager.Instance.m_buttonSFX.Play();
         SceneManager.LoadScene(m_menuSceneIndex);
     }
 
     public void Play()
     {
+        SFXManager.Instance.m_buttonSFX.Play();
         SceneManager.LoadScene(m_gameSceneIndex);
     }
 }

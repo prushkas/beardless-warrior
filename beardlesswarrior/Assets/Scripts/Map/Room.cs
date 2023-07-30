@@ -61,6 +61,10 @@ public class Room : MonoBehaviour
         {
             door.SetActive(!open);
         }
+        if (open)
+        {
+            SFXManager.Instance.m_doorSFX.Play();
+        }
     }
 
     void ShowChests(bool show)

@@ -27,4 +27,14 @@ public class EnemyLifeSystem : GenericLifeSystem, IDamage, IDie
     {
         gameObject.SetActive(false);
     }
+
+    public void SkullDamageSFX()
+    {
+        SFXManager.Instance.m_skullDamage.Play();
+    }
+
+    public void GhostDamageSFX()
+    {
+        SFXManager.Instance.m_ghostDamage.Play();
+    }
 }

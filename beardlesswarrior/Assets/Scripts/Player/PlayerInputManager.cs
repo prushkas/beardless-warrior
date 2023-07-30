@@ -30,9 +30,6 @@ public class PlayerInputManager : MonoBehaviour
     }
     void Update()
     {
-
-        if (Input.GetKeyDown(KeyCode.F5)) UnityEngine.SceneManagement.SceneManager.LoadScene(0);
-
         if (GameManager.Instance.m_GameOver) return;
         PauseInput();
         if (GameManager.Instance.m_Paused) return;
@@ -62,6 +59,7 @@ public class PlayerInputManager : MonoBehaviour
     {
         if (Input.GetKeyDown(m_pauseKeyCode))
         {
+            SFXManager.Instance.m_buttonSFX.Play();
             OnPauseButtonDown?.Invoke();
         }
     }

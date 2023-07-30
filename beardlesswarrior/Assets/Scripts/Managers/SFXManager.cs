@@ -1,0 +1,31 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class SFXManager : Singleton<SFXManager>
+{
+    //UI
+    [field: SerializeField] public AudioSource m_buttonSFX { get; private set; }
+
+    //Player
+    [field: SerializeField] public AudioSource m_playerDamage { get; private set; }
+    [field: SerializeField] public AudioSource m_playerMeleeAttack { get; private set; }
+    [field: SerializeField] public AudioSource m_playerSpecialAttack { get; private set; }
+    [field: SerializeField] public AudioSource m_playerHeal { get; private set; }
+    [field: SerializeField] public AudioSource m_playerDash { get; private set; }
+
+    //Map
+    [field: SerializeField] public AudioSource m_chestSFX { get; private set; }
+    [field: SerializeField] public AudioSource m_doorSFX { get; private set; }
+
+    //Enemies
+    [field: SerializeField] public AudioSource m_skullDamage { get; private set; }
+    [field: SerializeField] public AudioSource m_skullAttack { get; private set; }
+    [field: SerializeField] public AudioSource m_ghostDamage { get; private set; }
+    [field: SerializeField] public AudioSource m_spikes { get; private set; }
+    protected override void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+        base.Awake();
+    }
+}

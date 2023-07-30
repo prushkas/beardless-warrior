@@ -52,6 +52,7 @@ public class PlayerAim : MonoBehaviour
 
     public void MeleeAttack()
     {
+        SFXManager.Instance.m_playerMeleeAttack.Play();
         if (!m_meleeBoxTrigger.InTrigger(m_firepoint)) return;
         IDamage lifeSystem = m_meleeBoxTrigger.InTrigger<IDamage>(m_firepoint);
         if (lifeSystem == null) return;
@@ -76,7 +77,7 @@ public class PlayerAim : MonoBehaviour
     public void SpecialAttack()
     {
         if (m_currentSpecialTimer >= 0) return;
-
+        SFXManager.Instance.m_playerSpecialAttack.Play();
         SetSpecialTimer(m_specialTimer);
         bullet.SetActive(m_firepoint.position, m_aim.rotation, m_specialDamage);
     }
