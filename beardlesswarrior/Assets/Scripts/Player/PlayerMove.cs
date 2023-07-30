@@ -48,4 +48,9 @@ public class PlayerMove : MonoBehaviour
 
         m_rig.AddForce(dashDirection * m_dashForce, ForceMode2D.Impulse);
     }
+
+    public bool Moving()
+    {
+        return m_playerInputs.m_PlayerMoveDirection != Vector2.zero;
+    }
 }

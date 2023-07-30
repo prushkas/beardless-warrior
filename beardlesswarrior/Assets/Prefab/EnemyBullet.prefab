@@ -74,8 +74,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 0.8301887, g: 0.23887502, b: 0.23887502, a: 1}
+  m_Sprite: {fileID: 21300296, guid: c2957f4d831870a48af4ec016652548d, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -97,6 +97,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2de8bf66e410cf44b97ae924d440f334, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_circleTrigger:
+    triggerTag: Trigger
+    triggerLayerMask:
+      serializedVersion: 2
+      m_Bits: 383
+    centerObject: {fileID: 0}
+    triggerEvents:
+      OnTriggerEnter:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 240916060845145034}
+            m_TargetAssemblyTypeName: EnemyBullet, Assembly-CSharp
+            m_MethodName: DestroyBullet
+            m_Mode: 4
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0.01
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      OnTriggerStayInside:
+        m_PersistentCalls:
+          m_Calls: []
+      OnTriggerStayOutside:
+        m_PersistentCalls:
+          m_Calls: []
+      OnTriggerExit:
+        m_PersistentCalls:
+          m_Calls: []
+    drawSettings:
+      draw: 1
+      drawMethod: 0
+      drawSolid: 0
+      inColor: {r: 0, g: 1, b: 0, a: 1}
+      outColor: {r: 1, g: 0, b: 0, a: 1}
+    triggerOffset: {x: 0, y: 0}
+    triggerRadius: 0.125
   m_bulletSpeed: 3
-  m_bulletLifeTime: 2
+  m_bulletLifeTime: 4
   m_bulletDamage: 1

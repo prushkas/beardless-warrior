@@ -11,6 +11,7 @@ public class PlayerAim : MonoBehaviour
     [SerializeField] Transform m_firepoint;
     Vector2 m_aimDirection;
     float m_aimAngle;
+    public Vector2 m_AimDirection => m_aimDirection;
 
     [Header("Melee Settings")]
     [SerializeField] float m_meleeDamage;
@@ -47,7 +48,11 @@ public class PlayerAim : MonoBehaviour
 
     public void MeleeAttack()
     {
-        m_meleeBoxTrigger.InTrigger<IDamage>(transform.position)?.Damage(m_meleeDamage);
+        //m_meleeBoxTrigger.InTrigger<IDamage>(transform.position)?.Damage(m_meleeDamage);
+        if (!m_meleeBoxTrigger.InTrigger(m_firepoint)) return;
+        IDamage lifeSystem = m_meleeBoxTrigger.InTrigger<IDamage>(m_firepoint);
+        if (lifeSystem == null) return;
+        lifeSystem.Damage(m_meleeDamage);
     }
 
     void SetSpecialTimer(float timer)
