@@ -19,7 +19,7 @@ public class ShakeCam : Singleton<ShakeCam>
         {
             float x = Random.Range(-1f, 1f) * magnitude;
             float y = Random.Range(-1f, 1f) * magnitude;
-            newPosition.Set(transform.position.x + x, transform.position.y + y, -10f)
+            newPosition.Set(transform.position.x + x, transform.position.y + y, -10f);
             transform.position = newPosition;
             elapsed += Time.deltaTime;
             yield return 0;
