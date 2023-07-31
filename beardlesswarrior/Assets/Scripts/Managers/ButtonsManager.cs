@@ -52,5 +52,7 @@ public class ButtonsManager : Singleton<ButtonsManager>
     {
         SFXManager.Instance.Mute();
         m_muteImage.sprite = SFXManager.Instance.m_mute ? m_muteSprite : m_notMuteSprite;
+        SFXManager.Instance.m_buttonSFX.Play();
+
     }
 }

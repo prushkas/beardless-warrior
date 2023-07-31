@@ -8,6 +8,7 @@ public class EnemyLifeSystem : GenericLifeSystem, IDamage, IDie
     [SerializeField] UnityEngine.Events.UnityEvent OnDie;
     [SerializeField] Room m_currentRoom;
     SpriteRenderer m_spriteRenderer;
+    [SerializeField] GameObject m_particles;
     private void Awake()
     {
         m_currentHp = Mathf.Ceil(m_hpRange.GetRandomValue());
@@ -28,6 +29,7 @@ public class EnemyLifeSystem : GenericLifeSystem, IDamage, IDie
     }
     public void Death()
     {
+        Instantiate(m_particles, transform.position, Quaternion.identity);
         m_currentRoom.EnemyDefeat();
         gameObject.SetActive(false);
     }
