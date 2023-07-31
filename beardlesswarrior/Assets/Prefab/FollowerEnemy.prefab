@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_waypoints: []
-  m_moveSpeed: 2.5
+  m_moveSpeed: 3.25
   m_waypointDistance: 0.2
   m_timeToNextWaypoint: 5
 --- !u!114 &5957214564610177764
@@ -167,7 +167,7 @@ MonoBehaviour:
           m_Calls: []
     drawSettings:
       draw: 1
-      drawMethod: 0
+      drawMethod: 1
       drawSolid: 0
       inColor: {r: 0, g: 1, b: 0, a: 1}
       outColor: {r: 1, g: 0.00969137, b: 0, a: 1}
@@ -205,7 +205,7 @@ MonoBehaviour:
             m_CallState: 2
     drawSettings:
       draw: 1
-      drawMethod: 0
+      drawMethod: 1
       drawSolid: 0
       inColor: {r: 0, g: 1, b: 0, a: 1}
       outColor: {r: 1, g: 0.99934804, b: 0, a: 1}
@@ -266,6 +266,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  m_currentRoom: {fileID: 0}
 --- !u!95 &5957214564610177762
 Animator:
   serializedVersion: 4

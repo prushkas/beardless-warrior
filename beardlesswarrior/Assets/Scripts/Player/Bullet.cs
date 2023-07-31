@@ -9,6 +9,7 @@ public class Bullet : MonoBehaviour
     [SerializeField, Min(0)] float m_bulletLifeTime;
     [SerializeField] Trigger.System2D.BoxTrigger2D m_boxTrigger;
     float m_currentBulletLifeTime;
+
     private void Awake()
     {
         Desactive();
@@ -28,7 +29,7 @@ public class Bullet : MonoBehaviour
 
     private void FixedUpdate()
     {
-        m_boxTrigger.InTrigger<IDamage>(transform.position)?.Damage(m_bulletDamage);
+        m_boxTrigger.InTrigger<IDamage>(transform.position, true, false)?.Damage(m_bulletDamage);
     }
     public void SetActive(Vector3 position, Quaternion rotation, float bulletDamage)
     {

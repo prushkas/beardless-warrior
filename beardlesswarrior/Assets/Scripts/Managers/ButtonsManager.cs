@@ -9,12 +9,14 @@ public class ButtonsManager : Singleton<ButtonsManager>
     public void RestartScene()
     {
         SFXManager.Instance.m_buttonSFX.Play();
+        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void Quit()
     {
         SFXManager.Instance.m_buttonSFX.Play();
+        Time.timeScale = 1f;
         Application.Quit();
     }
 
@@ -27,12 +29,14 @@ public class ButtonsManager : Singleton<ButtonsManager>
     public void Menu()
     {
         SFXManager.Instance.m_buttonSFX.Play();
+        Time.timeScale = 1f;
         SceneManager.LoadScene(m_menuSceneIndex);
     }
 
     public void Play()
     {
         SFXManager.Instance.m_buttonSFX.Play();
+        Time.timeScale = 1f;
         SceneManager.LoadScene(m_gameSceneIndex);
     }
 }

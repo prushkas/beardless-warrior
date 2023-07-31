@@ -6,14 +6,9 @@ public class Room : MonoBehaviour
 {
     [SerializeField] bool m_finish;
     [SerializeField] List<GameObject> m_enemies;
-    List<GameObject> m_defeatedEnemies;
+    int m_defeatedEnemies;
     [SerializeField] List<GameObject> m_doors;
-    [SerializeField] List<GameObject> m_chests;
-
-    private void Awake()
-    {
-        m_defeatedEnemies = new();
-    }
+    [SerializeField] List<GameObject> m_chests = new();
 
     void Start()
     {
@@ -29,12 +24,10 @@ public class Room : MonoBehaviour
         ActiveEnemies(true);
     }
 
-    public void EnemyDefeat(GameObject enemy)
+    public void EnemyDefeat()
     {
-        if (m_defeatedEnemies.Contains(enemy)) return;
-        m_defeatedEnemies.Add(enemy);
-
-        if (m_defeatedEnemies.Count == m_enemies.Count)
+        m_defeatedEnemies++;
+        if (m_defeatedEnemies == m_enemies.Count)
         {
             FinishRoom();
         }
@@ -61,14 +54,13 @@ public class Room : MonoBehaviour
         {
             door.SetActive(!open);
         }
-        if (open)
-        {
-            SFXManager.Instance.m_doorSFX.Play();
-        }
+        SFXManager.Instance.m_doorSFX.Play();
     }
 
     void ShowChests(bool show)
     {
+        if (m_chests is null) return; 
+        if (m_chests.Count <= 0) return;
         foreach (GameObject chest in m_chests)
         {
             chest.SetActive(show);

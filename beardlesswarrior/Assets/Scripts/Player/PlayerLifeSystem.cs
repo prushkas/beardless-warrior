@@ -55,9 +55,14 @@ public class PlayerLifeSystem : GenericLifeSystem, IDamage, IHeal, IDie
     {
         if (m_currentHp >= m_hpRange.m_MaxValue) return;
         if (m_pots <= 0) return;
+        m_pots--;
+        ApplyHeal(heal);
+    }
+
+    void ApplyHeal(float heal)
+    {
         SFXManager.Instance.m_playerHeal.Play();
         m_currentHp += heal;
-        m_pots--;
         if (m_currentHp >= m_hpRange.m_MaxValue)
         {
             m_currentHp = m_hpRange.m_MaxValue;
@@ -75,7 +80,6 @@ public class PlayerLifeSystem : GenericLifeSystem, IDamage, IHeal, IDie
     public void IncreaseMaxHealth(float increaseValue)
     {
         m_hpRange.ChangeMaxValue(m_hpRange.m_MaxValue + increaseValue);
-        m_currentHp = m_hpRange.m_MaxValue;
-        OnHpChange?.Invoke();
+        ApplyHeal(increaseValue);
     }
 }
