@@ -23,9 +23,20 @@ public class SFXManager : Singleton<SFXManager>
     [field: SerializeField] public AudioSource m_skullAttack { get; private set; }
     [field: SerializeField] public AudioSource m_ghostDamage { get; private set; }
     [field: SerializeField] public AudioSource m_spikes { get; private set; }
+    public bool m_mute { get; private set; }
+    
     protected override void Awake()
     {
         DontDestroyOnLoad(gameObject);
         base.Awake();
     }
+
+    public void Mute()
+    {
+        m_mute = !m_mute;
+        float volume = m_mute ? 0f : 1f;
+        AudioListener.volume = volume;
+    }
+
+
 }
