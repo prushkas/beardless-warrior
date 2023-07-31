@@ -110,17 +110,17 @@ MonoBehaviour:
   - m_powerUpSprite: {fileID: 21300592, guid: c2957f4d831870a48af4ec016652548d, type: 3}
     m_powerUp: 1
     m_powerUpChance:
-      m_minValue: 0.26
+      m_minValue: 0.25
       m_maxValue: 0.5
   - m_powerUpSprite: {fileID: 21300426, guid: c2957f4d831870a48af4ec016652548d, type: 3}
     m_powerUp: 2
     m_powerUpChance:
-      m_minValue: 0.51
+      m_minValue: 0.5
       m_maxValue: 0.75
   - m_powerUpSprite: {fileID: 21300438, guid: c2957f4d831870a48af4ec016652548d, type: 3}
     m_powerUp: 3
     m_powerUpChance:
-      m_minValue: 0.76
+      m_minValue: 0.75
       m_maxValue: 1
   m_powerUpSpriteRenderer: {fileID: 9052953334923804967}
   m_powerUpSpriteTimer: 2

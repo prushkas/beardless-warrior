@@ -169,6 +169,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  m_currentRoom: {fileID: 0}
+  m_particles: {fileID: 8790747284619941, guid: 46622099ea2f0764b823ba7bfd670033, type: 3}
 --- !u!114 &3818112095738374232
 MonoBehaviour:
   m_ObjectHideFlags: 0
