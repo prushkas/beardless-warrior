@@ -14,13 +14,13 @@ public class ShakeCam : Singleton<ShakeCam>
     IEnumerator ShakeEffect(float duration, float magnitude)
     {
         float elapsed = 0f;
-
+        Vector3 newPosition = new();
         while (elapsed < duration)
         {
             float x = Random.Range(-1f, 1f) * magnitude;
             float y = Random.Range(-1f, 1f) * magnitude;
-
-            transform.position = new Vector3(transform.position.x + x, transform.position.y + y, -10f);
+            newPosition.Set(transform.position.x + x, transform.position.y + y, -10f)
+            transform.position = newPosition;
             elapsed += Time.deltaTime;
             yield return 0;
         }
