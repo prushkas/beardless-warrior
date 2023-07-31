@@ -40,7 +40,7 @@ public class PlayerMove : MonoBehaviour
     public void Dash()
     {
         if (m_currentDashTimer > 0) return;
-
+        SFXManager.Instance.m_playerDash.Play();
         ResetDashTimer();
 
         Vector2 dashDirection = m_playerInputs.m_PlayerMoveDirection != Vector2.zero ? 

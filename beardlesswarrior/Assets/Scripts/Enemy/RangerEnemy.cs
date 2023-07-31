@@ -34,6 +34,7 @@ public class RangerEnemy : AbstractEnemy
     }
     void Attack()
     {
+        SFXManager.Instance.m_skullAttack.Play();
         m_enemyAnimator.SetTrigger("Attack");
         m_currentTimeToAttack = m_rangeTimeToAttack.GetRandomValue();
         Instantiate(m_enemyBulletPrefab, transform.position, Quaternion.Euler(0f, 0f, AimAngle()));

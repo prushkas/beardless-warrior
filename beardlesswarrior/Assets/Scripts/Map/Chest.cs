@@ -30,6 +30,7 @@ public class Chest : MonoBehaviour, IDamage
     {
         if (m_open) return;
         m_open = true;
+        SFXManager.Instance.m_chestSFX.Play();
         m_chestSpriteRenderer.sprite = m_openChest;
         PickPowerUp();
     }
