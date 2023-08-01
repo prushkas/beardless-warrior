@@ -40,12 +40,17 @@ public class PlayerMove : MonoBehaviour
     public void Dash()
     {
         if (m_currentDashTimer > 0) return;
-
+        SFXManager.Instance.m_playerDash.Play();
         ResetDashTimer();
 
         Vector2 dashDirection = m_playerInputs.m_PlayerMoveDirection != Vector2.zero ? 
             m_playerInputs.m_PlayerMoveDirection : (m_playerInputs.MouseWorldPosition() - transform.position).normalized;
 
         m_rig.AddForce(dashDirection * m_dashForce, ForceMode2D.Impulse);
+    }
+
+    public bool Moving()
+    {
+        return m_playerInputs.m_PlayerMoveDirection != Vector2.zero;
     }
 }

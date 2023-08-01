@@ -11,16 +11,21 @@ public class PlayerAim : MonoBehaviour
     [SerializeField] Transform m_firepoint;
     Vector2 m_aimDirection;
     float m_aimAngle;
+    public Vector2 m_AimDirection => m_aimDirection;
 
     [Header("Melee Settings")]
-    [SerializeField] float m_meleeDamage;
-    [SerializeField] Trigger.System2D.BoxTrigger2D m_meleeBoxTrigger;
+    [SerializeField, Min(1)] float m_meleeDamage = 1f;
+    [SerializeField] Trigger.System2D.CircleTrigger2D m_meleeCircleTrigger;
 
     [Header("Special Settings")]
+    [SerializeField, Min(1)] float m_specialDamage = 1f;
     [SerializeField, Min(0)] float m_specialTimer;
     [SerializeField] Bullet bullet;
     float m_currentSpecialTimer;
-    
+    public float m_CurrentSpecialTimer => m_currentSpecialTimer;
+    public float m_SpecialTimer => m_specialTimer;
+
+
     public float m_AimAngle => m_aimAngle;
 
     private void Awake()
@@ -47,7 +52,21 @@ public class PlayerAim : MonoBehaviour
 
     public void MeleeAttack()
     {
-        m_meleeBoxTrigger.InTrigger<IDamage>(transform.position)?.Damage(m_meleeDamage);
+        SFXManager.Instance.m_playerMeleeAttack.Play();
+        if (!m_meleeCircleTrigger.InTrigger(m_firepoint)) return;
+        IDamage lifeSystem = m_meleeCircleTrigger.InTrigger<IDamage>(m_firepoint);
+        if (lifeSystem == null) return;
+        lifeSystem.Damage(m_meleeDamage);
+    }
+
+    public void IncreaseMeleeDamage(float value)
+    {
+        m_meleeDamage += value;
+    }
+
+    public void IncreaseSpecialDamage(float value)
+    {
+        m_specialDamage += value;
     }
 
     void SetSpecialTimer(float timer)
@@ -58,13 +77,13 @@ public class PlayerAim : MonoBehaviour
     public void SpecialAttack()
     {
         if (m_currentSpecialTimer >= 0) return;
-
+        SFXManager.Instance.m_playerSpecialAttack.Play();
         SetSpecialTimer(m_specialTimer);
-        bullet.SetActive(m_firepoint.position, m_aim.rotation);
+        bullet.SetActive(m_firepoint.position, m_aim.rotation, m_specialDamage);
     }
 
     private void OnDrawGizmosSelected()
     {
-        m_meleeBoxTrigger.DrawTrigger(Vector3.zero);
+        m_meleeCircleTrigger.DrawTrigger(Vector3.zero);
     }
 }
