@@ -15,7 +15,7 @@ public class PlayerAim : MonoBehaviour
 
     [Header("Melee Settings")]
     [SerializeField, Min(1)] float m_meleeDamage = 1f;
-    [SerializeField] Trigger.System2D.BoxTrigger2D m_meleeBoxTrigger;
+    [SerializeField] Trigger.System2D.CircleTrigger2D m_meleeCircleTrigger;
 
     [Header("Special Settings")]
     [SerializeField, Min(1)] float m_specialDamage = 1f;
@@ -53,8 +53,8 @@ public class PlayerAim : MonoBehaviour
     public void MeleeAttack()
     {
         SFXManager.Instance.m_playerMeleeAttack.Play();
-        if (!m_meleeBoxTrigger.InTrigger(m_firepoint)) return;
-        IDamage lifeSystem = m_meleeBoxTrigger.InTrigger<IDamage>(m_firepoint);
+        if (!m_meleeCircleTrigger.InTrigger(m_firepoint)) return;
+        IDamage lifeSystem = m_meleeCircleTrigger.InTrigger<IDamage>(m_firepoint);
         if (lifeSystem == null) return;
         lifeSystem.Damage(m_meleeDamage);
     }
@@ -84,6 +84,6 @@ public class PlayerAim : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        m_meleeBoxTrigger.DrawTrigger(Vector3.zero);
+        m_meleeCircleTrigger.DrawTrigger(Vector3.zero);
     }
 }

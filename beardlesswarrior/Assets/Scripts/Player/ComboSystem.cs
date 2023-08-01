@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class ComboSystem : MonoBehaviour
 {
+    //Mecânica desativada por ausência no GDD </3
+    [SerializeField] bool m_active;
     PlayerManager m_playerManager;
     [SerializeField] List<Reward> m_rewards;
     int m_currentCombo;
 
     private void Start()
     {
+        m_active = false;
         m_currentCombo = 0;
         m_playerManager = PlayerManager.Instance;
         UpdateUI();
@@ -17,12 +20,14 @@ public class ComboSystem : MonoBehaviour
 
     public void BreakCombo()
     {
+        if (!m_active) return;
         m_currentCombo = 0;
         UpdateUI();
     }
 
     public void EnemyDeafeat()
     {
+        if (!m_active) return;
         m_currentCombo++;
         UpdateUI();
         Reward();
