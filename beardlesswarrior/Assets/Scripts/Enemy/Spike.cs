@@ -53,7 +53,7 @@ public class Spike : AbstractEnemy
         m_active = false;
     }
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         m_activeTrigger.DrawTrigger(transform);
         m_damageArea.DrawTrigger(transform);

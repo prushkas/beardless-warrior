@@ -10,10 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 5957214564610177768}
   - component: {fileID: 5957214564610177761}
+  - component: {fileID: 6314392796215741442}
   - component: {fileID: 5957214564610177765}
-  - component: {fileID: 5957214564610177767}
   - component: {fileID: 5957214564610177764}
   - component: {fileID: 5957214564610177763}
+  - component: {fileID: 5957214564610177767}
   - component: {fileID: 5957214564610177762}
   m_Layer: 7
   m_Name: FollowerEnemy
@@ -89,6 +90,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &6314392796215741442
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5957214564610177771}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 2
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!58 &5957214564610177765
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -105,22 +127,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &5957214564610177767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5957214564610177771}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30dbe00a7e43e5a47b7272b1669d83c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_waypoints: []
-  m_moveSpeed: 3.25
-  m_waypointDistance: 0.2
-  m_timeToNextWaypoint: 5
 --- !u!114 &5957214564610177764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,6 +257,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 5957214564610177767}
+        m_TargetAssemblyTypeName: FollowerEnemy, Assembly-CSharp
+        m_MethodName: Knockback
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnDie:
     m_PersistentCalls:
       m_Calls:
@@ -268,6 +286,23 @@ MonoBehaviour:
         m_CallState: 2
   m_currentRoom: {fileID: 0}
   m_particles: {fileID: 8790747284619941, guid: 46622099ea2f0764b823ba7bfd670033, type: 3}
+--- !u!114 &5957214564610177767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5957214564610177771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30dbe00a7e43e5a47b7272b1669d83c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_waypoints: []
+  m_moveSpeed: 3.25
+  m_waypointDistance: 0.2
+  m_timeToNextWaypoint: 25
+  m_knockbackForce: 10
 --- !u!95 &5957214564610177762
 Animator:
   serializedVersion: 4

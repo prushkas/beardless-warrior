@@ -30,6 +30,7 @@ public class EnemyLifeSystem : GenericLifeSystem, IDamage, IDie
     public void Death()
     {
         Instantiate(m_particles, transform.position, Quaternion.identity);
+        PlayerManager.Instance.m_ComboSystem.EnemyDeafeat();
         m_currentRoom.EnemyDefeat();
         gameObject.SetActive(false);
     }

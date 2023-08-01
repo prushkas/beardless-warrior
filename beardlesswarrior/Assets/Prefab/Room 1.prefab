@@ -104,7 +104,7 @@ MonoBehaviour:
             m_CallState: 2
     drawSettings:
       draw: 1
-      drawMethod: 0
+      drawMethod: 1
       drawSolid: 0
       inColor: {r: 0, g: 1, b: 0, a: 1}
       outColor: {r: 1, g: 0, b: 0, a: 1}
