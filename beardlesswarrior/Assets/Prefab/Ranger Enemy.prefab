@@ -127,8 +127,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_hpRange:
-    m_minValue: 0
-    m_maxValue: 3
+    m_minValue: 1
+    m_maxValue: 1
   m_currentHp: 0
   OnHpMin:
     m_PersistentCalls:

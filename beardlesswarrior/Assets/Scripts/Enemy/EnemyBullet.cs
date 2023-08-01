@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBullet : MonoBehaviour
+public class EnemyBullet : MonoBehaviour, IDamage
 {
     [SerializeField] Trigger.System2D.CircleTrigger2D m_circleTrigger;
     [SerializeField, Min(0)] float m_bulletSpeed = 3f;
@@ -42,5 +42,10 @@ public class EnemyBullet : MonoBehaviour
     private void OnDrawGizmos()
     {
         m_circleTrigger.DrawTrigger(transform.position);
+    }
+
+    public void Damage(float damage)
+    {
+        DestroyBullet();
     }
 }

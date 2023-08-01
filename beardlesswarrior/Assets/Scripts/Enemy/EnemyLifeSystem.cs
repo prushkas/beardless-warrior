@@ -17,7 +17,7 @@ public class EnemyLifeSystem : GenericLifeSystem, IDamage, IDie
     public void Damage(float damage)
     {
         m_currentHp -= damage;
-        if (m_currentHp <= m_hpRange.m_MinValue)
+        if (m_currentHp <= 0)
         {
             OnDie?.Invoke();
             Death();

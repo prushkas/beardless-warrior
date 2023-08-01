@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 240916060845145035}
   - component: {fileID: 240916060845145012}
   - component: {fileID: 240916060845145034}
-  m_Layer: 0
+  - component: {fileID: 5228856793300571145}
+  m_Layer: 7
   m_Name: EnemyBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +102,7 @@ MonoBehaviour:
     triggerTag: Trigger
     triggerLayerMask:
       serializedVersion: 2
-      m_Bits: 383
+      m_Bits: 840
     centerObject: {fileID: 0}
     triggerEvents:
       OnTriggerEnter:
@@ -139,3 +140,29 @@ MonoBehaviour:
   m_bulletSpeed: 8
   m_bulletLifeTime: 4
   m_bulletDamage: 1
+--- !u!61 &5228856793300571145
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240916060845145013}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.06, y: -0.03}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.0062894, y: 1.0062894}
+    newSize: {x: 1, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.9, y: 0.3}
+  m_EdgeRadius: 0
