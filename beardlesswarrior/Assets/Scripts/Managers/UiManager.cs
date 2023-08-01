@@ -19,6 +19,10 @@ public class UiManager : Singleton<UiManager>
     [SerializeField] Color m_startColor = Color.green;
     [SerializeField] Color m_endColor = Color.red;
 
+    [Header("Combo")]
+    [SerializeField] GameObject m_comboTextGameObject;
+    [SerializeField] TMPro.TextMeshProUGUI m_comboText;
+
     [Header("Canvas")]
     [SerializeField] GameObject m_gameplayCanvasObject;
     [SerializeField] GameObject m_pauseCanvasObject;
@@ -72,5 +76,11 @@ public class UiManager : Singleton<UiManager>
         m_gameOverCanvasObject.SetActive(show);
         m_pauseCanvasObject.SetActive(!show);
         m_gameplayCanvasObject.SetActive(!show);
+    }
+
+    public void ComboText(bool showText, int comboValue)
+    {
+        m_comboTextGameObject.SetActive(showText);
+        m_comboText.text = $"COMBO: x{comboValue}";
     }
 }

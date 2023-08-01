@@ -11,7 +11,7 @@ public class MapCameraUpdate : MonoBehaviour
     bool m_camfollowing;
     void Awake()
     {
-        m_camfollowing = false;
+        DesactiveFollow();
         m_mainCameraTransform = Camera.main.transform;
         m_targetPosition.Set(transform.position.x, transform.position.y, m_mainCameraTransform.transform.position.z);
 
@@ -26,8 +26,7 @@ public class MapCameraUpdate : MonoBehaviour
         m_mainCameraTransform.position = Vector3.Lerp(m_mainCameraTransform.position, m_targetPosition, m_camSmooth * Time.deltaTime);
         if (Vector3.Distance(m_mainCameraTransform.position, m_targetPosition) < m_limit)
         {
-            m_mainCameraTransform.position = m_targetPosition;
-            m_camfollowing = false;
+            TPCam();
         }
     }
 
@@ -41,5 +40,11 @@ public class MapCameraUpdate : MonoBehaviour
     public void DesactiveFollow()
     {
         m_camfollowing = false;
+    }
+
+    public void TPCam()
+    {
+        m_mainCameraTransform.position = m_targetPosition;
+        DesactiveFollow();
     }
 }

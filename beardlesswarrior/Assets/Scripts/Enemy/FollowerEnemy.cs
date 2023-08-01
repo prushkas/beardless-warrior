@@ -11,11 +11,14 @@ public class FollowerEnemy : AbstractEnemy
     [SerializeField, Range(0, 2f)] float m_waypointDistance = .2f;
     [SerializeField, Min(0)] float m_timeToNextWaypoint = 2f;
     SpriteRenderer m_enemySpriteRenderer;
+    Rigidbody2D m_rig;
+    [SerializeField, Min(0)] float m_knockbackForce = 2f;
 
     private void Awake()
     {
         DesactiveChase();
         PickNewWaypoint();
+        m_rig = GetComponent<Rigidbody2D>();
         m_enemySpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -26,7 +29,7 @@ public class FollowerEnemy : AbstractEnemy
 
     void Move()
     {
-        Vector3 target = m_chasing ? m_playerTransform.position : m_currentWaypoint.position;
+        Vector3 target = Target();
         Anim(target.x);
         transform.position = Vector3.MoveTowards(transform.position, target, m_moveSpeed * Time.deltaTime);
         if (m_chasing) return;
@@ -34,6 +37,16 @@ public class FollowerEnemy : AbstractEnemy
         {
             PickNewWaypoint();
         }
+    }
+
+    Vector3 Target()
+    {
+        return m_chasing ? m_playerTransform.position : m_currentWaypoint.position;
+    }
+
+    public void Knockback()
+    {
+        m_rig.AddForce(m_knockbackForce * (transform.position - Target()).normalized, ForceMode2D.Impulse);
     }
 
     void PickNewWaypoint()

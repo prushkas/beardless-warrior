@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerLifeSystem : GenericLifeSystem, IDamage, IHeal, IDie
 {
+    [SerializeField, Min(0)] float m_maxMaxHP = 9;
     SpriteRenderer m_playerSpriteRenderer;
     bool m_canTakeDamage = true;
     [SerializeField, Min(0)] float m_invincibilitySeconds = 1f;
@@ -34,6 +35,7 @@ public class PlayerLifeSystem : GenericLifeSystem, IDamage, IHeal, IDie
             Death();
             return;
         }
+        PlayerManager.Instance.m_ComboSystem.BreakCombo();
         ShakeCam.Instance.Shake(.35f, .1f);
         OnHpChange?.Invoke();
     }
@@ -62,7 +64,7 @@ public class PlayerLifeSystem : GenericLifeSystem, IDamage, IHeal, IDie
         ApplyHeal(heal);
     }
 
-    void ApplyHeal(float heal)
+    public void ApplyHeal(float heal)
     {
         SFXManager.Instance.m_playerHeal.Play();
         m_currentHp += heal;
@@ -82,6 +84,7 @@ public class PlayerLifeSystem : GenericLifeSystem, IDamage, IHeal, IDie
 
     public void IncreaseMaxHealth(float increaseValue)
     {
+        if (m_hpRange.m_MaxValue >= m_maxMaxHP) return;
         m_hpRange.ChangeMaxValue(m_hpRange.m_MaxValue + increaseValue);
         ApplyHeal(increaseValue);
     }
