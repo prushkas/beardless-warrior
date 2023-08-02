@@ -29,14 +29,26 @@ public class SFXManager : Singleton<SFXManager>
     {
         DontDestroyOnLoad(gameObject);
         base.Awake();
+
     }
+    private void Start()
+    {
+        m_mute = !SaveManager.Instance.m_settings.m_sound;
+        MuteCheck();
+    }
+
+
 
     public void Mute()
     {
         m_mute = !m_mute;
+        MuteCheck();
+    }
+
+    void MuteCheck()
+    {
         float volume = m_mute ? 0f : 1f;
         AudioListener.volume = volume;
     }
-
 
 }
