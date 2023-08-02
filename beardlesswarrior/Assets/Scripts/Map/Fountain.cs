@@ -6,14 +6,19 @@ public class Fountain : MonoBehaviour, IDamage
 {
     bool m_used;
     PlayerManager m_playerManager;
+    [SerializeField] Sprite m_fullFontainSprite;
+    [SerializeField] Sprite m_emptyFontainSprite;
+    SpriteRenderer m_spriteRenderer;
     private void Awake()
     {
         m_used = false;
+        m_spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Start()
     {
         m_playerManager = PlayerManager.Instance;
+        UpdateSprite();
     }
     
     void Use()
@@ -21,6 +26,7 @@ public class Fountain : MonoBehaviour, IDamage
         if (m_used) return;
         m_used = true;
         m_playerManager.m_PlayerLifeSystem.ApplyHeal(9999);
+        UpdateSprite();
     }
 
     public void Damage(float damage)
@@ -28,4 +34,8 @@ public class Fountain : MonoBehaviour, IDamage
         Use();
     }
 
+    void UpdateSprite()
+    {
+        m_spriteRenderer.sprite = m_used ? m_emptyFontainSprite : m_fullFontainSprite;
+    }
 }
