@@ -4,9 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 public class UiManager : Singleton<UiManager>
 {
+    Camera cam;
     PlayerManager m_playerManager;
     PlayerLifeSystem m_playerLifeSystem;
     PlayerAim m_playerAim;
+    Transform m_playerTransform;
 
     [Header("HP")]
     [SerializeField] List<RawImage> m_hearts;
@@ -15,6 +17,7 @@ public class UiManager : Singleton<UiManager>
     [SerializeField] TMPro.TextMeshProUGUI m_potText;
 
     [Header("Special")]
+    [SerializeField] Vector3 m_timerOffset;
     [SerializeField] Image m_specialTimer;
     [SerializeField] Color m_startColor = Color.green;
     [SerializeField] Color m_endColor = Color.red;
@@ -34,6 +37,8 @@ public class UiManager : Singleton<UiManager>
         m_playerManager = PlayerManager.Instance;
         m_playerAim = m_playerManager.m_PlayerAim;
         m_playerLifeSystem = m_playerManager.m_PlayerLifeSystem;
+        m_playerTransform = m_playerManager.transform;
+        cam = Camera.main;
         HeartUiUpdate();
     }
 
@@ -59,7 +64,7 @@ public class UiManager : Singleton<UiManager>
     void SpecialTimerUiUpdate()
     {
         float fillAmount = m_playerAim.m_CurrentSpecialTimer / m_playerAim.m_SpecialTimer;
-        
+        m_specialTimer.rectTransform.position = RectTransformUtility.WorldToScreenPoint(cam, m_playerTransform.position + m_timerOffset);
         Color currentColor = Color.Lerp(m_startColor, m_endColor, fillAmount);
         m_specialTimer.color = currentColor;
         m_specialTimer.fillAmount = Mathf.Abs(1 - fillAmount);

@@ -2520,7 +2520,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -177, y: 191}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 32, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &282749076
 CanvasRenderer:
@@ -11333,7 +11333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5433d5d4ed389c4f83e6bcdf420d803, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_active: 0
+  m_active: 1
   m_rewards:
   - m_comboValue: 5
     m_powerUps: 00000000
@@ -14443,9 +14443,10 @@ MonoBehaviour:
   m_fullHeart: {fileID: 21300000, guid: a6717e58691719a4aac79e51961a8ed3, type: 3}
   m_emptyHeart: {fileID: 21300000, guid: 8dd6ce5d7d8bce14cb21522754673e0a, type: 3}
   m_potText: {fileID: 1819942632}
+  m_timerOffset: {x: 0.35, y: -0.3, z: 0}
   m_specialTimer: {fileID: 282749078}
-  m_startColor: {r: 0.9960785, g: 0.9960785, b: 0.83921576, a: 1}
-  m_endColor: {r: 0.16078432, g: 0.16470589, b: 0.07450981, a: 0.5019608}
+  m_startColor: {r: 0.9960785, g: 0.9960785, b: 0.83921576, a: 0}
+  m_endColor: {r: 0.9960785, g: 0.9960785, b: 0.83921576, a: 1}
   m_comboTextGameObject: {fileID: 1250841559}
   m_comboText: {fileID: 1250841561}
   m_gameplayCanvasObject: {fileID: 190681268}

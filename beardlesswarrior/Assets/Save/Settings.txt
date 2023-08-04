@@ -1,1 +1,1 @@
-{"m_sound":true,"m_tutorialDone":true}
+{"m_sound":true,"m_tutorialDone":false}
