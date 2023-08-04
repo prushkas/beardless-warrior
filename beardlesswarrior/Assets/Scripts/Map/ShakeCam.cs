@@ -17,6 +17,7 @@ public class ShakeCam : Singleton<ShakeCam>
         Vector3 newPosition = new();
         while (elapsed < duration)
         {
+            if (BreakShakeEffect()) break;
             float x = Random.Range(-1f, 1f) * magnitude;
             float y = Random.Range(-1f, 1f) * magnitude;
             newPosition.Set(transform.position.x + x, transform.position.y + y, -10f);
@@ -25,5 +26,10 @@ public class ShakeCam : Singleton<ShakeCam>
             yield return 0;
         }
         transform.position = m_orignalPosition;
+    }
+
+    bool BreakShakeEffect()
+    {
+        return GameManager.Instance.m_Paused || GameManager.Instance.m_GameOver;
     }
 }

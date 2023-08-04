@@ -257,7 +257,7 @@ MonoBehaviour:
       inColor: {r: 0, g: 1, b: 0, a: 1}
       outColor: {r: 1, g: 0, b: 0, a: 1}
     triggerOffset: {x: 0, y: 0}
-    triggerSize: {x: 16, y: 8}
+    triggerSize: {x: 15.5, y: 7.5}
 --- !u!4 &4852248
 Transform:
   m_ObjectHideFlags: 0
@@ -916,7 +916,7 @@ MonoBehaviour:
       inColor: {r: 0, g: 1, b: 0, a: 1}
       outColor: {r: 1, g: 0, b: 0, a: 1}
     triggerOffset: {x: 0, y: 0}
-    triggerSize: {x: 16, y: 8}
+    triggerSize: {x: 15.5, y: 7.5}
 --- !u!4 &56964942
 Transform:
   m_ObjectHideFlags: 0
@@ -2005,7 +2005,7 @@ MonoBehaviour:
       inColor: {r: 0, g: 1, b: 0, a: 1}
       outColor: {r: 1, g: 0, b: 0, a: 1}
     triggerOffset: {x: 0, y: 0}
-    triggerSize: {x: 16, y: 8}
+    triggerSize: {x: 15.5, y: 7.5}
 --- !u!4 &235166832
 Transform:
   m_ObjectHideFlags: 0
@@ -4640,7 +4640,7 @@ MonoBehaviour:
       inColor: {r: 0, g: 1, b: 0, a: 1}
       outColor: {r: 1, g: 0, b: 0, a: 1}
     triggerOffset: {x: 0, y: 0}
-    triggerSize: {x: 16, y: 8}
+    triggerSize: {x: 15.5, y: 7.5}
 --- !u!1001 &683688344
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5931,7 +5931,7 @@ MonoBehaviour:
       inColor: {r: 0, g: 1, b: 0, a: 1}
       outColor: {r: 1, g: 0, b: 0, a: 1}
     triggerOffset: {x: 0, y: 0}
-    triggerSize: {x: 16, y: 8}
+    triggerSize: {x: 15.5, y: 7.5}
 --- !u!4 &781527756
 Transform:
   m_ObjectHideFlags: 0
@@ -6871,7 +6871,7 @@ MonoBehaviour:
       inColor: {r: 0, g: 1, b: 0, a: 1}
       outColor: {r: 1, g: 0, b: 0, a: 1}
     triggerOffset: {x: 0, y: 0}
-    triggerSize: {x: 16, y: 8}
+    triggerSize: {x: 15.5, y: 7.5}
 --- !u!4 &885839863
 Transform:
   m_ObjectHideFlags: 0
@@ -7260,7 +7260,7 @@ MonoBehaviour:
       inColor: {r: 0, g: 1, b: 0, a: 1}
       outColor: {r: 1, g: 0, b: 0, a: 1}
     triggerOffset: {x: 0, y: 0}
-    triggerSize: {x: 16, y: 8}
+    triggerSize: {x: 15.5, y: 7.5}
 --- !u!1001 &912123269
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12150,7 +12150,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1314785195}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 7, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12571,7 +12571,7 @@ MonoBehaviour:
       inColor: {r: 0, g: 1, b: 0, a: 1}
       outColor: {r: 1, g: 0, b: 0, a: 1}
     triggerOffset: {x: 0, y: 0}
-    triggerSize: {x: 16, y: 8}
+    triggerSize: {x: 15.5, y: 7.5}
 --- !u!4 &1352215219
 Transform:
   m_ObjectHideFlags: 0
@@ -13082,7 +13082,7 @@ MonoBehaviour:
       inColor: {r: 0, g: 1, b: 0, a: 1}
       outColor: {r: 1, g: 0, b: 0, a: 1}
     triggerOffset: {x: 0, y: 0}
-    triggerSize: {x: 16, y: 8}
+    triggerSize: {x: 15.5, y: 7.5}
 --- !u!4 &1375593753
 Transform:
   m_ObjectHideFlags: 0
@@ -17222,7 +17222,7 @@ MonoBehaviour:
       inColor: {r: 0, g: 1, b: 0, a: 1}
       outColor: {r: 1, g: 0, b: 0, a: 1}
     triggerOffset: {x: 0, y: 0}
-    triggerSize: {x: 16, y: 8}
+    triggerSize: {x: 15.5, y: 7.5}
 --- !u!1001 &1837098131
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23511,7 +23511,7 @@ MonoBehaviour:
       inColor: {r: 0, g: 1, b: 0, a: 1}
       outColor: {r: 1, g: 0, b: 0, a: 1}
     triggerOffset: {x: 0, y: 0}
-    triggerSize: {x: 16, y: 8}
+    triggerSize: {x: 15.5, y: 7.5}
 --- !u!1 &8353799538792331279
 GameObject:
   m_ObjectHideFlags: 0
@@ -23625,7 +23625,7 @@ MonoBehaviour:
       inColor: {r: 0, g: 1, b: 0, a: 1}
       outColor: {r: 1, g: 0, b: 0, a: 1}
     triggerOffset: {x: 0, y: 0}
-    triggerSize: {x: 16, y: 8}
+    triggerSize: {x: 15.5, y: 7.5}
 --- !u!114 &8353799539554158371
 MonoBehaviour:
   m_ObjectHideFlags: 0
