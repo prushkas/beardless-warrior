@@ -24,12 +24,16 @@ public class Tutorial : MonoBehaviour
         m_tutorialMain.SetActive(active);
         m_menu.SetActive(!active);
         m_index = 0;
-        NextPage();
+        if (active)
+        {
+            NextPage();
+        }
     }
 
     public void NextPage()
     {
         m_index++;
+        SFXManager.Instance.m_buttonSFX.Play();
         for (int i = 0; i < m_tutorialPages.Count; i++)
         {
             m_tutorialPages[i].SetActive(i == m_index - 1);
